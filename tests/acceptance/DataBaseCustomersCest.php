@@ -22,7 +22,7 @@ class DataBaseCustomersCest
         $I->executeJs('window.editor.setValue("select * from customers where City =\'London\'")');
         $I->click(self::BUTTON_RUN_SQL);
         $I->waitForText('Number of Records: 6', 10);
-        $I->seeNumberOfElements('//table[@class="w3-table-all notranslate"]/*/tr', 7);
+        $I->seeNumberOfElements('//table/*/tr', 7);
     }
 
     public function InsertTest(AcceptanceTester $I)
@@ -32,12 +32,12 @@ class DataBaseCustomersCest
         $I->waitForText('You have made changes to the database. Rows affected: 1');
         $I->executeJs('window.editor.setValue("select * from customers")');
         $I->click(self::BUTTON_RUN_SQL);
-        $I->waitForElement('//*/tr[last()]/td[text()="Ivanov IV"]', 10);
-        $I->canSeeElement('//*/tr[last()]/td[text()="Ivan Ivanov"]');
-        $I->canSeeElement('//*/tr[last()]/td[text()="Adress 12"]');
-        $I->canSeeElement('//*/tr[last()]/td[text()="Moscow"]');
-        $I->canSeeElement('//*/tr[last()]/td[text()="123456"]');
-        $I->canSeeElement('//*/tr[last()]/td[text()="Russia"]');
+        $I->waitForElement('//*[text()="Ivanov IV"]', 10);
+        $I->canSeeElement('//*/tr[last()]/*[text()="Ivan Ivanov"]');
+        $I->canSeeElement('//*/tr[last()]/*[text()="Adress 12"]');
+        $I->canSeeElement('//*/tr[last()]/*[text()="Moscow"]');
+        $I->canSeeElement('//*/tr[last()]/*[text()="123456"]');
+        $I->canSeeElement('//*/tr[last()]/*[text()="Russia"]');
     }
 
     public function UpdateTest(AcceptanceTester $I)
@@ -47,11 +47,11 @@ class DataBaseCustomersCest
         $I->waitForText('You have made changes to the database. Rows affected: 1', 10);
         $I->executeJs('window.editor.setValue("select * from customers")');
         $I->click(self::BUTTON_RUN_SQL);
-        $I->waitForElement('//tr[2]/td[text()="NewCustomerName"]', 10);
-        $I->canSeeElement('//tr[2]/td[text()="NewContactName"]');
-        $I->canSeeElement('//tr[2]/td[text()="NewAddress"]');
-        $I->canSeeElement('//tr[2]/td[text()="NewCity"]');
-        $I->canSeeElement('//tr[2]/td[text()="111111"]');
-        $I->canSeeElement('//tr[2]/td[text()="NewCountry"]');
+        $I->waitForElement('//*[text()="NewCustomerName"]', 10);
+        $I->canSeeElement('//*[text()="NewContactName"]');
+        $I->canSeeElement('//*[text()="NewAddress"]');
+        $I->canSeeElement('//*[text()="NewCity"]');
+        $I->canSeeElement('//*[text()="111111"]');
+        $I->canSeeElement('//*[text()="NewCountry"]');
     }
 }
